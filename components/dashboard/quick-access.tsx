@@ -3,10 +3,10 @@ import { UserPlus, ClipboardList, CreditCard, Wallet } from "lucide-react"
 import { Card } from "@/components/ui/card"
 
 const actions = [
-  { label: "Nuevo alumno", href: "/alumnos", icon: UserPlus },
-  { label: "Nueva inscripción", href: "/inscripciones", icon: ClipboardList },
-  { label: "Registrar pago", href: "/pagos", icon: CreditCard },
-  { label: "Movimiento de caja", href: "/cajas", icon: Wallet },
+  { label: "Nuevo alumno", href: "/students", icon: UserPlus },
+  { label: "Nueva inscripción", href: "/enrollments", icon: ClipboardList },
+  { label: "Registrar pago", href: "/payments", icon: CreditCard },
+  { label: "Movimiento de caja", href: "/cash_box", icon: Wallet },
 ]
 
 export function QuickAccess() {

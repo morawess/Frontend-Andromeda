@@ -1,5 +1,6 @@
 import { Bell, Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import Link from "next/link"
 
 export function Topbar({ title }: { title: string }) {
   return (
@@ -18,14 +19,14 @@ export function Topbar({ title }: { title: string }) {
             aria-label="Buscar"
           />
         </div>
-        <button
-          type="button"
-          className="relative flex size-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-muted"
+        <Link
+          href="/alerts"
+          className="relative flex size-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           aria-label="Notificaciones"
         >
           <Bell className="size-4.5" aria-hidden="true" />
           <span className="absolute right-2 top-2 size-2 rounded-full bg-destructive" />
-        </button>
+        </Link>
       </div>
     </header>
   )

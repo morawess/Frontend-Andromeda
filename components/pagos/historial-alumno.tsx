@@ -42,7 +42,7 @@ export function HistorialAlumno({ alumno }: { alumno: Alumno }) {
         variant="ghost"
         size="sm"
         className="w-fit gap-2 text-muted-foreground"
-        render={<Link href="/pagos" />}
+        render={<Link href="/payments" />}
       >
         <ArrowLeft className="size-4" aria-hidden="true" />
         Volver a pagos
@@ -61,12 +61,12 @@ export function HistorialAlumno({ alumno }: { alumno: Alumno }) {
               {alumno.nombre} {alumno.apellido}
             </h1>
             <p className="text-sm text-muted-foreground">
-              {alumno.crew} · {alumno.cuota} / mes
+              {alumno.crews.join(", ")} · {alumno.cuota} / mes
             </p>
           </div>
         </div>
         <Badge variant="secondary" className="bg-primary/10 text-primary">
-          {alumno.crew}
+          {alumno.crews.join(", ")}
         </Badge>
       </Card>
 

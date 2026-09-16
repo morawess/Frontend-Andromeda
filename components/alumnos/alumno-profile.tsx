@@ -39,7 +39,7 @@ export function AlumnoProfile({ alumno }: { alumno: Alumno }) {
     <div className="mx-auto flex max-w-4xl flex-col gap-5">
       <div className="flex items-center gap-3">
         <Button
-          render={<Link href="/alumnos" aria-label="Volver al listado" />}
+          render={<Link href="/students" aria-label="Volver al listado" />}
           variant="ghost"
           size="icon"
           className="shrink-0"
@@ -68,12 +68,12 @@ export function AlumnoProfile({ alumno }: { alumno: Alumno }) {
                 </Badge>
               </div>
               <p className="text-sm text-muted-foreground">
-                {alumno.crew} · {alumno.categoria}
+                {alumno.crews.join(", ")} · {alumno.categoria}
               </p>
             </div>
           </div>
           <Button
-            render={<Link href={`/alumnos/${alumno.id}/editar`} />}
+            render={<Link href={`/students/${alumno.id}/editar`} />}
             className="gap-2"
           >
             <Pencil className="size-4" aria-hidden="true" />
@@ -129,7 +129,7 @@ export function AlumnoProfile({ alumno }: { alumno: Alumno }) {
         <InfoSection
           title="Competencias"
           rows={[
-            { label: "Crew", value: alumno.crew },
+            { label: "Crews", value: alumno.crews.join(", ") },
             { label: "Categoría / cuota", value: alumno.categoria },
             {
               label: "Apto para competir",

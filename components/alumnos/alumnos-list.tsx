@@ -35,7 +35,7 @@ export function AlumnosList() {
     const q = query.trim().toLowerCase()
     if (!q) return alumnos
     return alumnos.filter((a) =>
-      `${a.nombre} ${a.apellido} ${a.dni} ${a.crew}`.toLowerCase().includes(q),
+      `${a.nombre} ${a.apellido} ${a.dni} ${a.crews.join(" ")}`.toLowerCase().includes(q),
     )
   }, [query])
 
@@ -56,23 +56,24 @@ export function AlumnosList() {
           </div>
         </Card>
 
-        <Button render={<Link href="/alumnos/nuevo" />} size="lg" className="gap-2">
+        <Button render={<Link href="/students/nuevo" />} size="lg" className="gap-2">
           <Plus className="size-4" aria-hidden="true" />
           Añadir alumno
         </Button>
       </div>
 
       {pendientes > 0 && (
-        <div
-          className="flex items-center gap-3 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700"
-          role="status"
+        <Link
+          href="/alerts"
+          className="flex items-center gap-3 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700 transition-colors hover:bg-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+          aria-label="Ver alertas de aptos físicos pendientes o vencidos"
         >
           <AlertTriangle className="size-4.5 shrink-0" aria-hidden="true" />
           <p>
             <span className="font-semibold">{pendientes} alumno(s)</span> con apto físico
             pendiente o vencido. Revisá su documentación.
           </p>
-        </div>
+        </Link>
       )}
 
       <Card className="overflow-hidden p-0">
@@ -98,7 +99,7 @@ export function AlumnosList() {
             <TableRow className="hover:bg-transparent">
               <TableHead>Alumno</TableHead>
               <TableHead className="hidden sm:table-cell">DNI</TableHead>
-              <TableHead className="hidden md:table-cell">Crew</TableHead>
+              <TableHead className="hidden md:table-cell">Crews</TableHead>
               <TableHead>Estado</TableHead>
               <TableHead className="text-right">Cuota</TableHead>
             </TableRow>
@@ -108,7 +109,7 @@ export function AlumnosList() {
               <TableRow key={a.id} className="cursor-pointer">
                 <TableCell>
                   <Link
-                    href={`/alumnos/${a.id}`}
+                    href={`/students/${a.id}`}
                     className="flex items-center gap-3 font-medium text-foreground"
                   >
                     <Avatar className="size-9">
@@ -125,7 +126,7 @@ export function AlumnosList() {
                   {a.dni}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  <span className="text-muted-foreground">{a.crew}</span>
+                  <span className="text-muted-foreground">{a.crews.join(", ")}</span>
                 </TableCell>
                 <TableCell>
                   <Badge variant="secondary" className={estadoStyles[a.estado]}>

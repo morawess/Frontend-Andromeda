@@ -21,7 +21,7 @@ export type Alumno = {
   numeroAfiliado: string
   observacionesSalud: string
   // Competencias
-  crew: string
+  crews: string[]
   categoria: string
   aptoCompetir: boolean
   cuota: string
@@ -46,7 +46,7 @@ export const alumnos: Alumno[] = [
     obraSocial: "OSDE",
     numeroAfiliado: "60034567/01",
     observacionesSalud: "Sin observaciones relevantes.",
-    crew: "Recreativo",
+    crews: ["Recreativo", "Competencia"],
     categoria: "Cuota 8",
     aptoCompetir: true,
     cuota: "$30.000",
@@ -69,7 +69,7 @@ export const alumnos: Alumno[] = [
     obraSocial: "Apross",
     numeroAfiliado: "22045678/00",
     observacionesSalud: "Alergia a la penicilina.",
-    crew: "Competencia",
+    crews: ["Competencia"],
     categoria: "Cuota 8",
     aptoCompetir: true,
     cuota: "$45.000",
@@ -92,7 +92,7 @@ export const alumnos: Alumno[] = [
     obraSocial: "Swiss Medical",
     numeroAfiliado: "78091234/02",
     observacionesSalud: "Sin observaciones relevantes.",
-    crew: "Elite",
+    crews: ["Elite"],
     categoria: "Cuota 8",
     aptoCompetir: true,
     cuota: "$60.000",
@@ -115,7 +115,7 @@ export const alumnos: Alumno[] = [
     obraSocial: "OSDE",
     numeroAfiliado: "60078901/03",
     observacionesSalud: "Pendiente presentar apto físico.",
-    crew: "Recreativo",
+    crews: ["Recreativo"],
     categoria: "Cuota 8",
     aptoCompetir: false,
     cuota: "$30.000",
@@ -138,7 +138,7 @@ export const alumnos: Alumno[] = [
     obraSocial: "Galeno",
     numeroAfiliado: "33056712/01",
     observacionesSalud: "Sin observaciones relevantes.",
-    crew: "Recreativo",
+    crews: ["Recreativo"],
     categoria: "Cuota 8",
     aptoCompetir: true,
     cuota: "$30.000",
@@ -161,7 +161,7 @@ export const alumnos: Alumno[] = [
     obraSocial: "Sancor Salud",
     numeroAfiliado: "44011223/00",
     observacionesSalud: "Baja temporal por lesión.",
-    crew: "Elite",
+    crews: ["Elite"],
     categoria: "Cuota 8",
     aptoCompetir: false,
     cuota: "$60.000",

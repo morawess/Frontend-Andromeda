@@ -28,8 +28,8 @@ export function RegistrarPago({ onDone }: { onDone?: () => void }) {
   const [descuento, setDescuento] = useState("0")
 
   const alumno = alumnos.find((a) => a.id === alumnoId)
-  const crew = (alumno?.crew as Crew) ?? "Recreativo"
-  const base = alumno ? montoPorCrew[crew] : 0
+  const crews = (alumno?.crews as Crew[]) ?? []
+  const base = crews.reduce((acc, c) => acc + (montoPorCrew[c] || 0), 0)
   const desc = Number(descuento) || 0
   const total = useMemo(() => montoConDescuento(base, desc), [base, desc])
 
@@ -87,8 +87,8 @@ export function RegistrarPago({ onDone }: { onDone?: () => void }) {
 
       <div className="rounded-xl border border-border bg-muted/40 p-4 text-sm">
         <div className="flex items-center justify-between py-1">
-          <span className="text-muted-foreground">Crew</span>
-          <span className="font-medium text-foreground">{alumno ? crew : "—"}</span>
+          <span className="text-muted-foreground">Crews</span>
+          <span className="font-medium text-foreground">{alumno ? crews.join(", ") : "—"}</span>
         </div>
         <div className="flex items-center justify-between py-1">
           <span className="text-muted-foreground">Cuota base</span>

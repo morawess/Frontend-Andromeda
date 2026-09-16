@@ -26,7 +26,7 @@ export function PagosView() {
   const [crew, setCrew] = useState<Crew>("Recreativo")
   const [openRegistrar, setOpenRegistrar] = useState(false)
 
-  const alumnosCrew = alumnos.filter((a) => a.crew === crew && a.estado !== "Baja")
+  const alumnosCrew = alumnos.filter((a) => a.crews.includes(crew) && a.estado !== "Baja")
   const pendientes = pendientesDeCrew(crew)
   const pendientesIds = new Set(pendientes.map((p) => p.alumnoId))
 
@@ -91,7 +91,7 @@ export function PagosView() {
                 className="flex items-center justify-between gap-4 px-4 py-3"
               >
                 <Link
-                  href={`/pagos/${a.id}`}
+                  href={`/payments/${a.id}`}
                   className="flex items-center gap-3 font-medium text-foreground"
                 >
                   <Avatar className="size-9">
@@ -117,7 +117,7 @@ export function PagosView() {
                   <Button
                     size="sm"
                     variant={debe ? "default" : "outline"}
-                    render={<Link href={`/pagos/${a.id}`} />}
+                    render={<Link href={`/payments/${a.id}`} />}
                   >
                     {debe ? "Cobrar" : "Ver historial"}
                   </Button>

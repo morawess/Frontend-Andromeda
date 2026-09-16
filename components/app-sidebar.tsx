@@ -10,17 +10,18 @@ import {
   CreditCard,
   Wallet,
   Settings,
+  Bell,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navItems = [
   { label: "Inicio", href: "/", icon: Home },
-  { label: "Alumnos", href: "/alumnos", icon: Users },
-  { label: "Inscripciones", href: "/inscripciones", icon: ClipboardList },
-  { label: "Crews", href: "/crews", icon: Layers },
-  { label: "Pagos", href: "/pagos", icon: CreditCard },
-  { label: "Cajas", href: "/cajas", icon: Wallet },
-  { label: "Sistema", href: "/sistema", icon: Settings },
+  { label: "Alumnos", href: "/students", icon: Users },
+  { label: "Inscripciones", href: "/enrollments", icon: ClipboardList },
+  { label: "Clases", href: "/crews", icon: Layers },
+  { label: "Pagos", href: "/payments", icon: CreditCard },
+  { label: "Caja", href: "/cash_box", icon: Wallet },
+  { label: "Sistema", href: "/settings", icon: Settings },
 ]
 
 export function AppSidebar() {
@@ -29,13 +30,13 @@ export function AppSidebar() {
   return (
     <aside className="flex h-dvh w-60 shrink-0 flex-col bg-sidebar text-sidebar-foreground">
       <div className="flex items-center gap-3 px-6 py-6">
-        <div className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-fuchsia-500 via-purple-500 to-orange-400">
-          <span className="size-4 rounded-full bg-sidebar" />
+        <div className="flex size-9 items-center justify-center rounded-full overflow-hidden shrink-0">
+          <img src="/logo.png" alt="Andromeda Logo" className="w-full h-full object-cover" />
         </div>
         <div className="leading-tight">
           <p className="text-sm font-semibold tracking-wide">ANDROMEDA</p>
           <p className="text-[10px] uppercase tracking-[0.2em] text-sidebar-foreground/60">
-            Studio
+            Dance School
           </p>
         </div>
       </div>

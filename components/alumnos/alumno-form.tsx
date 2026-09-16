@@ -49,7 +49,7 @@ export function AlumnoForm({ alumno }: { alumno?: Alumno }) {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
-    router.push(alumno ? `/alumnos/${alumno.id}` : "/alumnos")
+    router.push(alumno ? `/students/${alumno.id}` : "/students")
   }
 
   return (
@@ -59,7 +59,7 @@ export function AlumnoForm({ alumno }: { alumno?: Alumno }) {
           <Button
             render={
               <Link
-                href={alumno ? `/alumnos/${alumno.id}` : "/alumnos"}
+                href={alumno ? `/students/${alumno.id}` : "/students"}
                 aria-label="Volver"
               />
             }
@@ -160,19 +160,21 @@ export function AlumnoForm({ alumno }: { alumno?: Alumno }) {
         </FormSection>
 
         <FormSection title="Competencias" description="Crew y estado competitivo.">
-          <Field id="crew" label="Crew">
-            <Select defaultValue={alumno?.crew}>
-              <SelectTrigger id="crew" className="w-full">
-                <SelectValue placeholder="Seleccionar crew" />
-              </SelectTrigger>
-              <SelectContent>
-                {crews.map((c) => (
-                  <SelectItem key={c} value={c}>
-                    {c}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+          <Field id="crews" label="Crews" className="sm:col-span-2">
+            <div className="flex flex-wrap gap-4 mt-2">
+              {crews.map((c) => (
+                <label key={c} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="crews"
+                    value={c}
+                    defaultChecked={alumno?.crews?.includes(c)}
+                    className="size-4 rounded border-gray-300 text-primary focus:ring-primary"
+                  />
+                  <span className="text-sm text-foreground">{c}</span>
+                </label>
+              ))}
+            </div>
           </Field>
           <Field id="categoria" label="Categoría / cuota">
             <Input id="categoria" defaultValue={alumno?.categoria} placeholder="Cuota 8" />
@@ -190,7 +192,7 @@ export function AlumnoForm({ alumno }: { alumno?: Alumno }) {
 
         <div className="flex justify-end gap-3 pt-6">
           <Button
-            render={<Link href={alumno ? `/alumnos/${alumno.id}` : "/alumnos"} />}
+            render={<Link href={alumno ? `/students/${alumno.id}` : "/students"} />}
             type="button"
             variant="outline"
           >
