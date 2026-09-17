@@ -4,23 +4,23 @@ import { cn } from "@/lib/utils"
 
 const stats = [
   {
-    label: "Próximo pago",
+    label: "Cierre de caja",
     value: "$150.000",
-    caption: "Vence el 15 de agosto",
+    //caption: "Último cierre: 12/06/2024",
     icon: CalendarClock,
     tone: "primary" as const,
   },
   {
     label: "Pagos pendientes",
     value: "45",
-    caption: "Requieren seguimiento",
+    //caption: "Requieren seguimiento",
     icon: AlertTriangle,
     tone: "warning" as const,
   },
   {
     label: "Alumnos activos",
     value: "225",
-    caption: "+12 este mes",
+    //caption: "+12 este mes",
     icon: Users,
     tone: "neutral" as const,
   },
@@ -45,7 +45,6 @@ export function StatCards() {
                 <p className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
                   {stat.value}
                 </p>
-                <p className="mt-1 text-xs text-muted-foreground">{stat.caption}</p>
               </div>
               <div
                 className={cn(

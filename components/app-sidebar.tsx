@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import {
   Home,
   Users,
@@ -11,6 +11,7 @@ import {
   Wallet,
   Settings,
   Bell,
+  LogOut,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -26,6 +27,12 @@ const navItems = [
 
 export function AppSidebar() {
   const pathname = usePathname()
+  const router = useRouter()
+
+  const handleLogout = () => {
+    document.cookie = "isLoggedIn=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+    router.push("/auth/login")
+  }
 
   return (
     <aside className="flex h-dvh w-60 shrink-0 flex-col bg-sidebar text-sidebar-foreground">
@@ -65,16 +72,25 @@ export function AppSidebar() {
       </nav>
 
       <div className="border-t border-sidebar-border px-4 py-4">
-        <div className="flex items-center gap-3">
-          <div className="flex size-9 items-center justify-center rounded-full bg-sidebar-accent text-sm font-semibold">
-            JF
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <div className="flex size-9 items-center justify-center rounded-full bg-sidebar-accent text-sm font-semibold">
+              JF
+            </div>
+            <div className="min-w-0 leading-tight">
+              <p className="truncate text-sm font-medium">Jere Farías</p>
+              <p className="truncate text-xs text-sidebar-foreground/60">
+                Administrador
+              </p>
+            </div>
           </div>
-          <div className="min-w-0 leading-tight">
-            <p className="truncate text-sm font-medium">Jere Farías</p>
-            <p className="truncate text-xs text-sidebar-foreground/60">
-              Administrador
-            </p>
-          </div>
+          <button
+            onClick={handleLogout}
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-red-500 hover:bg-red-500/10 transition-colors"
+          >
+            <LogOut className="size-4.5 shrink-0" aria-hidden="true" />
+            Cerrar sesión
+          </button>
         </div>
       </div>
     </aside>

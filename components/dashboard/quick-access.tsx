@@ -20,9 +20,9 @@ export function QuickAccess() {
             <Link
               key={action.label}
               href={action.href}
-              className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:bg-primary/5"
+              className="flex items-center gap-3 rounded-xl border border-violet-500/20 bg-violet-500/10 px-4 py-3 text-sm font-medium text-violet-700 dark:text-violet-300 transition-colors hover:border-violet-500/30 hover:bg-violet-500/20"
             >
-              <span className="flex size-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <span className="flex size-9 items-center justify-center rounded-lg bg-violet-500/20 text-violet-700 dark:text-violet-300">
                 <Icon className="size-4.5" aria-hidden="true" />
               </span>
               {action.label}
